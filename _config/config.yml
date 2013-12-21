@@ -1,0 +1,7 @@
+---
+Name: keyboardshortcuts
+After: 'framework/*', 'cms/*'
+---
+LeftAndMain:
+    extensions:
+        - "KeyboardShortcuts"

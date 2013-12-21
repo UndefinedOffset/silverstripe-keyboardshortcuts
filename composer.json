@@ -1,0 +1,25 @@
+{
+	"name": "undefinedoffset/silverstripe-keyboardshortcuts",
+	"description": "Adds keyboard shortcuts for common tasks to SilverStripe 3.0 (ctrl/command+s for save anyone?)",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "keyboard", "shortcuts"],
+    "license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Ed Chipman",
+			"homepage": "http://www.edchipman.ca",
+			"role": "Developer"
+		}
+	],
+	"require":
+	{
+		"silverstripe/framework": "~3.1",
+		"composer/installers": "*"
+	},
+	"support": {
+		"issues": "https://github.com/undefinedoffset/silverstripe-keyboardshortcuts/issues"
+	},
+	"extra": {
+		"installer-name": "keyboardshortcuts"
+	}
+}
