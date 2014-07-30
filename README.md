@@ -32,3 +32,34 @@ These shortcuts are not guarenteed towork in all browsers on all operating syste
 ``ctrl+m``/``command+m`` Toggle between preview modes (Split mode > Edit mode > Preview mode) saved in session
 
 ``ctrl+j``/``command+j`` Toggle between preview sizes (Auto > Desktop > Tablet > Mobile) saved in session
+
+
+#### TinyMCE
+``ctrl+shift+k``/``command+shift+k`` Insert Link
+
+``alt+shift+k``/``alt+shift+k`` Unlink
+
+``ctrl+shift+m``/``command+shift+m`` Insert Media
+
+``ctrl+shift+l``/``command+shift+l`` Insert or Remove Bulleted List
+
+``ctrl+l``/``command+l`` Insert or Remove Numbered List
+
+*These are in addition to the built in keyboard shortcuts for TinyMCE:*  
+``ctrl+z``/``command+z`` Undo Typing
+
+``ctrl+y``/``command+y`` Redo Typing
+
+``ctrl+b``/``command+b`` Bold text
+
+``ctrl+i``/``command+i`` Italic text
+
+``ctrl+u``/``command+u`` Underline text
+
+``ctrl+1`` to ``ctrl+6``/``command+1`` to ``command+6`` Heading 1 to 6
+
+``ctrl+7``/``command+7`` Paragraph
+
+``ctrl+8``/``command+8`` Div
+
+``ctrl+9``/``command+9`` Address
