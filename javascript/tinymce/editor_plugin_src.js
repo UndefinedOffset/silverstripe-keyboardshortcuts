@@ -1,7 +1,11 @@
 (function() {
-    // Load plugin specific language pack
-    tinymce.PluginManager.requireLangPack('sskeyboardshortcuts');
-
+    //TinyMCE will stop loading if it encounters non-existent external script file when included through tiny_mce_gzip.php. Only load the external lang package if it is available.
+    var availableLangs=['en'];
+    if(jQuery.inArray(tinymce.settings.language, availableLangs)!=-1) {
+        tinymce.PluginManager.requireLangPack('sskeyboardshortcuts');
+    }
+    
+    
     tinymce.create('tinymce.plugins.ssKeyboardShortcuts', {
         init: function(ed, url) {
             ed.addShortcut('ctrl+shift+k', ed.getLang('sskeyboardshortcuts.insertlink', 0), 'sslink'); //Insert a link
@@ -24,7 +28,7 @@
             };
         }
     });
-
+    
     // Register plugin
     tinymce.PluginManager.add('sskeyboardshortcuts', tinymce.plugins.ssKeyboardShortcuts);
 })();
