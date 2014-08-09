@@ -1,15 +1,13 @@
 (function($) {
     $.entwine('ss', function($) {
         $('.cms-edit-form').entwine({
-            onmatch: function() {
+            onadd: function() {
                 this._super();
                 
                 var self=$(this);
                 
                 
                 /***** Bind Keyboard Events *****/
-                var tmp=this._saveForm;
-                
                 //Global Events
                 Mousetrap.bindGlobal('mod+s', function(e) {return self._saveForm(e);}); //Save Draft/Save
                 
@@ -28,7 +26,7 @@
                     Mousetrap.bindGlobal('mod+n', function(e) {return self._addPage(e);}); //Add Page
                 }
             },
-            onunmatch: function() {
+            onremove: function() {
                 this._super();
                 
                 
