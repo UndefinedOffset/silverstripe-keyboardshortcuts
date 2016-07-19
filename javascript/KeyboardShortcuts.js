@@ -166,26 +166,65 @@
         
         //TinyMCE Binding
         $('textarea.htmleditor').entwine({
-            KeyHandler: null,
+            MousetrapListeners: [],
             
-            onadd: function() {
+            /**
+             * Handles binding the event listeners to tinymce when the editor is initialized
+             */
+            oneditorinit: function() {
                 this._super();
                 
-                var self=this;
-                var keyHandler=function(tinyMCE, e) {
-                    self._keyHandler(e);
-                };
-                this.setKeyHandler(keyHandler);
-                
-                var editor=this.getEditor().getInstance();
-                editor.onKeyPress.add(keyHandler);
-                editor.onKeyDown.add(keyHandler);
-                editor.onKeyUp.add(keyHandler);
+                var listeners=this.getMousetrapListeners();
+                if(listeners.length>0) {
+                    var editorBody=this.getEditor().getInstance().contentWindow.document.body;
+                    
+                    //Purge all keyboard shortcuts 
+                    Mousetrap(editorBody).reset();
+                    
+                    //Remap all keyboard shortcuts
+                    for(var i=0;i<listeners.length;++i) {
+                        Mousetrap(editorBody).noTinyMCEBind(listeners[i].key, listeners[i].callback, listeners[i].action);
+                    }
+                }
             },
             
-            _keyHandler: function(e) {
-                Mousetrap.handleKeyEvent(e);
+            /**
+             * Caches the listener to bind to
+             * @param {string} key Keyboard combination to bind to
+             * @param {function} callback Callback function
+             * @param {string} action Keyboard key action
+             */
+            bindMousetrap: function(key, callback, action) {
+                var listeners=this.getMousetrapListeners();
+                listeners.push({
+                    'key': key,
+                    'callback': callback,
+                    'action': action
+                });
+                
+                this.setMousetrapListeners(listeners);
+                
+                //Bind the listener if the editor's window is ready
+                if(this.getEditor().getInstance().contentWindow) {
+                    Mousetrap(this.getEditor().getInstance().contentWindow.document.body).noTinyMCEBind(listeners[i].key, listeners[i].callback, listeners[i].action);
+                }
             }
         });
     });
 })(jQuery);
+
+(function(Mousetrap) {
+    var _oldBind=Mousetrap.prototype.bind;
+    
+    Mousetrap.prototype.bind=function(keys, callback, action) {
+        _oldBind.call(this, keys, callback, action);
+        
+        jQuery('textarea.htmleditor').entwine('ss').bindMousetrap(keys, callback, action);
+    };
+    
+    Mousetrap.prototype.noTinyMCEBind=function(keys, callback, action) {
+        _oldBind.call(this, keys, callback, action);
+    };
+    
+    Mousetrap.init();
+})(Mousetrap);
