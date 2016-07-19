@@ -1,6 +1,6 @@
 SilverStripe Keyboard Shortcuts
 =================
-Adds keyboard shortcuts for common tasks to SilverStripe 3.1 (ctrl/command+s for save anyone?).
+Adds keyboard shortcuts for common tasks to SilverStripe 3.1+ (ctrl/command+s for save anyone?).
 
 ## Requirements
 * SilverStripe 3.1+
