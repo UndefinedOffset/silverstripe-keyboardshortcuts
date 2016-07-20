@@ -206,7 +206,7 @@
                 
                 //Bind the listener if the editor's window is ready
                 if(this.getEditor().getInstance().contentWindow) {
-                    Mousetrap(this.getEditor().getInstance().contentWindow.document.body).noTinyMCEBind(listeners[i].key, listeners[i].callback, listeners[i].action);
+                    Mousetrap(this.getEditor().getInstance().contentWindow.document.body).noTinyMCEBind(key, callback, action);
                 }
             }
         });
