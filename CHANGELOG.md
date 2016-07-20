@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.3.1](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/tree/0.3.1) (2016-07-20)
+[Full Changelog](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/compare/0.3.0...0.3.1)
+
+**Closed issues:**
+
+- Uncaught ReferenceError: i is not defined [\#10](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/issues/10)
+
 ## [0.3.0](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/tree/0.3.0) (2016-07-19)
 [Full Changelog](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/compare/0.2.2...0.3.0)
 
