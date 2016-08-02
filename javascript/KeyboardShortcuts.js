@@ -97,7 +97,6 @@
                 var modeDropdown=$('.cms-preview .preview-mode-selector .preview-dropdown');
                 if(modeDropdown.length>0) {
                     if(modeDropdown.val()=='split') {
-                        window.console.log('test');
                         jQuery('.cms-preview').entwine('ss.preview').changeMode('content', true);
                     }else if(modeDropdown.val()=='content') {
                         jQuery('.cms-preview').entwine('ss.preview').changeMode('preview', true);
@@ -132,7 +131,7 @@
         
         
         $('.CMSPagesController').entwine({
-            onmatch: function() {
+            onadd: function() {
                 this._super();
                 
                 var self=$(this);
@@ -141,7 +140,7 @@
                 /***** Bind Keyboard Events *****/
                 Mousetrap.bindGlobal(['ctrl+n', 'command+n'], function(e) {return self._addPage(e);}); //Add Page
             },
-            onunmatch: function() {
+            onremove: function() {
                 this._super();
                 
                 
