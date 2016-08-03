@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.3.3](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/tree/0.3.3) (2016-07-20)
+[Full Changelog](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/compare/0.3.1...0.3.3)
+
+
 ## [0.3.1](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/tree/0.3.1) (2016-07-20)
 [Full Changelog](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/compare/0.3.0...0.3.1)
 
