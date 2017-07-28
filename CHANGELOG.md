@@ -1,8 +1,19 @@
 # Change Log
 
-## [0.3.3](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/tree/0.3.3) (2016-07-20)
-[Full Changelog](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/compare/0.3.1...0.3.3)
+## [0.4.0](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/tree/0.4.0) (2017-07-28)
+[Full Changelog](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/compare/0.3.3...0.4.0)
 
+**Implemented enhancements:**
+
+- Search Shortcut [\#11](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/issues/11)
+
+**Fixed bugs:**
+
+- ctrl+n and command+n no longer working [\#13](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/issues/13)
+- save & publish under page-settings doesn't work [\#12](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/issues/12)
+
+## [0.3.3](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/tree/0.3.3) (2016-08-03)
+[Full Changelog](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/compare/0.3.1...0.3.3)
 
 ## [0.3.1](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/tree/0.3.1) (2016-07-20)
 [Full Changelog](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/compare/0.3.0...0.3.1)
