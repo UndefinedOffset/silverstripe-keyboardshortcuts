@@ -9,7 +9,7 @@ Adds keyboard shortcuts for common tasks to SilverStripe 3.1+ (ctrl/command+s fo
 * Download the module from here https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/archive/master.zip
 * Extract the downloaded archive into your site root so that the destination folder is called keyboardshortcuts, opening the extracted folder should contain _config.php in the root along with other files/folders
 * Run dev/build?flush=all to regenerate the manifest
- 
+
 If you prefer you may also install using composer:
 ```
 composer require undefinedoffset/silverstripe-keyboardshortcuts
@@ -21,11 +21,15 @@ These shortcuts are not guarenteed towork in all browsers on all operating syste
 #### Global
 ``ctrl+s``/``command+s`` Save/Save Draft
 
+``ctrl+n``/``command+n`` Add Page/Create Page/New Model Admin Item
+
+``ctrl+f``/``command+f`` Toggles the search panel in pages and in other cms sections
+
+``ctrl+shift+f``/``command+shift+f`` Clears the current search filters in pages and in other cms sections
+
 
 #### Pages only
 ``ctrl+shift+s``/``command+shift+s`` Save and Publish
-
-``ctrl+n``/``command+n`` Add Page/Create Page
 
 ``ctrl+k``/``command+k`` Toggle between Draft/Published Preview [not saved]
 
@@ -45,7 +49,7 @@ These shortcuts are not guarenteed towork in all browsers on all operating syste
 
 ``ctrl+l``/``command+l`` Insert or Remove Numbered List
 
-*These are in addition to the built in keyboard shortcuts for TinyMCE:*  
+*These are in addition to the built in keyboard shortcuts for TinyMCE:*
 ``ctrl+z``/``command+z`` Undo Typing
 
 ``ctrl+y``/``command+y`` Redo Typing

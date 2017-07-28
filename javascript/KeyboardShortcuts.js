@@ -13,7 +13,7 @@
                 
                 
                 //CMS Page Edit Controller Only
-                if($(this).hasClass('CMSPageEditController') || $(this).hasClass('CMSPageSettingsController')) {
+                if(self.hasClass('CMSPageEditController') || self.hasClass('CMSPageSettingsController')) {
                     Mousetrap.bindGlobal('mod+shift+s', function(e) {return self._saveAndPublish(e);}); //Publish
                     Mousetrap.bindGlobal('mod+k', function(e) {return self._switchStage(e);}); //Preview Stage Switch
                     Mousetrap.bindGlobal('mod+m', function(e) {return self._switchPreviewMode(e);}); //Preview View Mode Switch
@@ -22,7 +22,7 @@
                 
                 
                 //CMS Page Edit and CMS Add Page controllers only
-                if($(this).hasClass('CMSPageEditController') || $(this).hasClass('CMSPageAddController')) {
+                if(self.hasClass('CMSPageEditController') || self.hasClass('CMSPageAddController')) {
                     Mousetrap.bindGlobal('mod+n', function(e) {return self._addPage(e);}); //Add Page
                 }
             },
@@ -138,7 +138,7 @@
                 
                 
                 /***** Bind Keyboard Events *****/
-                Mousetrap.bindGlobal(['ctrl+n', 'command+n'], function(e) {return self._addPage(e);}); //Add Page
+                Mousetrap.bindGlobal('mod+n', function(e) {return self._addPage(e);}); //Add Page
             },
             onremove: function() {
                 this._super();
@@ -156,6 +156,109 @@
                 var button=$('.cms-page-add-button, #Form_AddForm_action_doAdd');
                 if(button.length>0) {
                     button.click();
+                    
+                    return false;
+                }
+            }
+        });
+        
+        
+        $('.ModelAdmin').entwine({
+            onadd: function() {
+                this._super();
+                
+                var self=$(this);
+                
+                
+                /***** Bind Keyboard Events *****/
+                Mousetrap.bindGlobal('mod+n', function(e) {return self._modelAdminNew(e);}); //ModelAdmin add new
+            },
+            onremove: function() {
+                this._super();
+                
+                
+                /***** Unbind Keyboard Events *****/
+                Mousetrap.reset();
+            },
+            
+            //---------- Handlers ----------//
+            /**
+             * Handles adding a new item in a model admin
+             */
+            _modelAdminNew: function(e) {
+                var button=$('.cms-edit-form > fieldset > .ss-gridfield .ss-gridfield-buttonrow-before .new-link');
+                if(button.length>0) {
+                    button.click();
+                    
+                    return false;
+                }
+            }
+        });
+        
+        
+        $('.cms-content').entwine({
+            onadd: function() {
+                this._super();
+                
+                var self=$(this);
+                
+                
+                /***** Bind Keyboard Events *****/
+                //Bind search
+                if($('.cms-content-header #filters-button').length>0) {
+                    Mousetrap.bindGlobal('mod+f', function(e) {return self._toggleSearch(e);}); //Toggle the search panel
+                }
+                
+                
+                //Bind clear search filters for cms main as well as model admin
+                if(self.hasClass('CMSPagesController') || self.hasClass('CMSPageEditController') || self.hasClass('CMSPageSettingsController') || self.hasClass('ModelAdmin')) {
+                    Mousetrap.bindGlobal('mod+shift+f', function(e) {return self._clearSearchFilters(e);}); //Clear all search filters
+                }
+            },
+            onremove: function() {
+                this._super();
+                
+                
+                /***** Unbind Keyboard Events *****/
+                Mousetrap.reset();
+            },
+            
+            //---------- Handlers ----------//
+            /**
+             * Toggles showing/hiding of the search
+             */
+            _toggleSearch: function(e) {
+                var button=$('#filters-button');
+                if(button.length>0) {
+                    button.showHide();
+                    
+                    if(button.data('collapsed')) {
+                        $('.cms-search-form').find('input:not(.action):visible:first').focus();
+                    }else {
+                        $('.cms-search-form').find('input:not(.action):visible:first').blur();
+                    }
+                    
+                    return false;
+                }
+            },
+            
+            /**
+             * Clears the search filters
+             */
+            _clearSearchFilters: function(e) {
+                var button=$('#cms-content-treeview .cms-tree-filtered > a.clear-filter');
+                if(button.length>0) {
+                    button.click();
+                    
+                    return false;
+                }
+                
+                button=$('#cms-content-tools-ModelAdmin form.cms-search-form .resetformaction');
+                if(button.length>0) {
+                    try {button.click();} catch(e) {}
+                    
+                    //Click the apply button to submit
+                    try {$('#cms-content-tools-ModelAdmin #Form_SearchForm_action_search').click();} catch(e) {}
                     
                     return false;
                 }
