@@ -13,7 +13,7 @@
                 
                 
                 //CMS Page Edit Controller Only
-                if($(this).hasClass('CMSPageEditController')) {
+                if($(this).hasClass('CMSPageEditController') || $(this).hasClass('CMSPageSettingsController')) {
                     Mousetrap.bindGlobal('mod+shift+s', function(e) {return self._saveAndPublish(e);}); //Publish
                     Mousetrap.bindGlobal('mod+k', function(e) {return self._switchStage(e);}); //Preview Stage Switch
                     Mousetrap.bindGlobal('mod+m', function(e) {return self._switchPreviewMode(e);}); //Preview View Mode Switch
