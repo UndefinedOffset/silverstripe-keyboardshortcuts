@@ -23,7 +23,7 @@
                 
                 //CMS Page Edit and CMS Add Page controllers only
                 if(self.hasClass('CMSPageEditController') || self.hasClass('CMSPageAddController')) {
-                    Mousetrap.bindGlobal('mod+n', function(e) {return self._addPage(e);}); //Add Page
+                    Mousetrap.bindGlobal('shift+n', function(e) {return self._addPage(e);}); //Add Page
                 }
             },
             onremove: function() {
@@ -63,7 +63,7 @@
              * Targets the  Add New button in CMSMain
              */
             _addPage: function(e) {
-                var button=$('.cms-page-add-button, #Form_AddForm_action_doAdd');
+                var button=$('.cms-page-add-button, .cms-content-addpage-button, #Form_AddForm_action_doAdd');
                 if(button.length>0) {
                     button.click();
                     
@@ -138,7 +138,7 @@
                 
                 
                 /***** Bind Keyboard Events *****/
-                Mousetrap.bindGlobal('mod+n', function(e) {return self._addPage(e);}); //Add Page
+                Mousetrap.bindGlobal('shift+n', function(e) {return self._addPage(e);}); //Add Page
             },
             onremove: function() {
                 this._super();
@@ -153,7 +153,7 @@
              * Targets the  Add New button in CMSMain
              */
             _addPage: function(e) {
-                var button=$('.cms-page-add-button, #Form_AddForm_action_doAdd');
+                var button=$('.cms-page-add-button, .cms-content-addpage-button, #Form_AddForm_action_doAdd');
                 if(button.length>0) {
                     button.click();
                     
@@ -171,7 +171,7 @@
                 
                 
                 /***** Bind Keyboard Events *****/
-                Mousetrap.bindGlobal('mod+n', function(e) {return self._modelAdminNew(e);}); //ModelAdmin add new
+                Mousetrap.bindGlobal('shift+n', function(e) {return self._modelAdminNew(e);}); //ModelAdmin add new
             },
             onremove: function() {
                 this._super();
