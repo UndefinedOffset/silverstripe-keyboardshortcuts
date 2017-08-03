@@ -22,7 +22,7 @@ These shortcuts are not guaranteed to work in all browsers on all operating syst
 #### Global
 ``ctrl+s``/``command+s`` Save/Save Draft
 
-``shift+n`` Add Page/Create Page/New Model Admin Item
+``ctrl+alt+n`` Add Page/Create Page/New Model Admin Item
 
 ``ctrl+f``/``command+f`` Toggles the search panel in pages and in other cms sections
 

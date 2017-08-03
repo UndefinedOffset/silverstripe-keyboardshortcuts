@@ -23,7 +23,7 @@
                 
                 //CMS Page Edit and CMS Add Page controllers only
                 if(self.hasClass('CMSPageEditController') || self.hasClass('CMSPageAddController')) {
-                    Mousetrap.bindGlobal('shift+n', function(e) {return self._addPage(e);}); //Add Page
+                    Mousetrap.bindGlobal('mod+alt+n', function(e) {return self._addPage(e);}); //Add Page
                 }
             },
             onremove: function() {
@@ -138,7 +138,7 @@
                 
                 
                 /***** Bind Keyboard Events *****/
-                Mousetrap.bindGlobal('shift+n', function(e) {return self._addPage(e);}); //Add Page
+                Mousetrap.bindGlobal('mod+alt+n', function(e) {return self._addPage(e);}); //Add Page
             },
             onremove: function() {
                 this._super();
@@ -171,7 +171,7 @@
                 
                 
                 /***** Bind Keyboard Events *****/
-                Mousetrap.bindGlobal('shift+n', function(e) {return self._modelAdminNew(e);}); //ModelAdmin add new
+                Mousetrap.bindGlobal('mod+alt+n', function(e) {return self._modelAdminNew(e);}); //ModelAdmin add new
             },
             onremove: function() {
                 this._super();
