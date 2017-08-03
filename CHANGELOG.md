@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.4.1](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/tree/0.4.1) (2017-08-03)
+[Full Changelog](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/compare/0.4.0...0.4.1)
+
+**Fixed bugs:**
+
+- shift+n creates a new Page [\#14](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/issues/14)
+
 ## [0.4.0](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/tree/0.4.0) (2017-07-28)
 [Full Changelog](https://github.com/UndefinedOffset/silverstripe-keyboardshortcuts/compare/0.3.3...0.4.0)
 
