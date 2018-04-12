@@ -268,7 +268,8 @@
         
         //TinyMCE Binding
         $('textarea.htmleditor').entwine({
-            MousetrapListeners: [],
+            MousetrapListeners: {},
+            BoundListeners: {},
             
             /**
              * Handles binding the event listeners to tinymce when the editor is initialized
@@ -277,17 +278,41 @@
                 this._super();
                 
                 var listeners=this.getMousetrapListeners();
-                if(listeners.length>0) {
+                if(this.getEditor().getInstance().contentWindow) {
                     var editorBody=this.getEditor().getInstance().contentWindow.document.body;
                     
                     //Purge all keyboard shortcuts 
                     Mousetrap(editorBody).reset();
                     
                     //Remap all keyboard shortcuts
-                    for(var i=0;i<listeners.length;++i) {
-                        Mousetrap(editorBody).noTinyMCEBind(listeners[i].key, listeners[i].callback, listeners[i].action);
+                    var boundListeners={};
+                    for(var key in listeners) {
+                        var listener=listeners[key];
+                        Mousetrap(editorBody).noTinyMCEBind(key, listener.callback, listener.action);
+                        
+                        boundListeners[key]=true;
                     }
+                    
+                    this.setBoundListeners(boundListeners);
                 }
+            },
+            
+            /**
+             * Removes all tinymce listeners on remove of the editor
+             */
+            onremove: function() {
+                if(this.getEditor().getInstance().contentWindow) {
+                    var editorBody=this.getEditor().getInstance().contentWindow.document.body;
+                    
+                    //Purge all keyboard shortcuts 
+                    Mousetrap(editorBody).reset();
+                }
+                
+                //Reset the object of listeners
+                this.setMousetrapListeners({});
+                this.setBoundListeners({});
+                
+                this._super();
             },
             
             /**
@@ -298,17 +323,26 @@
              */
             bindMousetrap: function(key, callback, action) {
                 var listeners=this.getMousetrapListeners();
-                listeners.push({
-                    'key': key,
-                    'callback': callback,
-                    'action': action
-                });
+                listeners[key]={
+                                'callback': callback,
+                                'action': action
+                            };
                 
                 this.setMousetrapListeners(listeners);
                 
-                //Bind the listener if the editor's window is ready
+                
+                //Bind the listener if the editor's window is ready and the keyboard shortcut is not already bound
                 if(this.getEditor().getInstance().contentWindow) {
-                    Mousetrap(this.getEditor().getInstance().contentWindow.document.body).noTinyMCEBind(key, callback, action);
+                    var editorBody=this.getEditor().getInstance().contentWindow.document.body;
+                    var boundListeners=this.getBoundListeners();
+                    
+                    if(typeof boundListeners[key]=='undefined') {
+                        Mousetrap(editorBody).noTinyMCEBind(key, callback, action);
+                        
+                        boundListeners[key]=true;
+                        
+                        this.setBoundListeners(boundListeners);
+                    }
                 }
             }
         });
@@ -317,7 +351,6 @@
 
 (function(Mousetrap) {
     var _oldBind=Mousetrap.prototype.bind;
-    
     Mousetrap.prototype.bind=function(keys, callback, action) {
         _oldBind.call(this, keys, callback, action);
         
