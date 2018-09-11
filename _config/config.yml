@@ -1,7 +1,8 @@
 ---
 Name: keyboardshortcuts
-After: 'framework/*', 'cms/*'
+After:
+    - "framework/*"
 ---
-LeftAndMain:
+SilverStripe\Admin\LeftAndMain:
     extensions:
-        - "KeyboardShortcuts"
+        - UndefinedOffset\KeyboardShortcuts\KeyboardShortcuts

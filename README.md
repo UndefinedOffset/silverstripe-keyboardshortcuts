@@ -29,9 +29,11 @@ These shortcuts are not guaranteed to work in all browsers on all operating syst
 ``ctrl+shift+f``/``command+shift+f`` Clears the current search filters in pages and in other cms sections
 
 
-#### Pages only
+#### Pages and Files only
 ``ctrl+shift+s``/``command+shift+s`` Save and Publish
 
+
+#### Pages only
 ``ctrl+k``/``command+k`` Toggle between Draft/Published Preview [not saved]
 
 ``ctrl+m``/``command+m`` Toggle between preview modes (Split mode > Edit mode > Preview mode) saved in session
@@ -40,8 +42,6 @@ These shortcuts are not guaranteed to work in all browsers on all operating syst
 
 
 #### TinyMCE
-``ctrl+shift+k``/``command+shift+k`` Insert Link
-
 ``alt+shift+k``/``alt+shift+k`` Unlink
 
 ``ctrl+shift+m``/``command+shift+m`` Insert Media

@@ -8,7 +8,7 @@
     
     tinymce.create('tinymce.plugins.ssKeyboardShortcuts', {
         init: function(ed, url) {
-            ed.addShortcut('ctrl+shift+k', ed.getLang('sskeyboardshortcuts.insertlink', 0), 'sslink'); //Insert a link
+            //ed.addShortcut('ctrl+shift+k', ed.getLang('sskeyboardshortcuts.insertlink', 0), 'sslink'); //Insert a link
             
             ed.addShortcut('alt+shift+k', ed.getLang('sskeyboardshortcuts.unlink', 0), 'unlink'); //Unlink
             
@@ -17,6 +17,11 @@
             ed.addShortcut('ctrl+shift+l', ed.getLang('sskeyboardshortcuts.insertbullets', 0), 'InsertUnorderedList'); //Insert or Remove Bulleted List
             
             ed.addShortcut('ctrl+l', ed.getLang('sskeyboardshortcuts.insertnumbers', 0), 'InsertOrderedList'); //Insert or Remove Numbered List
+            
+            //Bind the mousetrap events
+            ed.once('init', function() {
+                jQuery(ed.getElement()).entwine('ss').editorinit();
+            });
         },
         getInfo: function() {
             return {

@@ -1,6 +1,7 @@
 <?php
-define('KEYBOARD_SHORTCUTS_BASE', basename(dirname(__FILE__)));
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
+use SilverStripe\Forms\HTMLEditor\TinyMCEConfig;
 
 
-HtmlEditorConfig::get('cms')->enablePlugins(array('sskeyboardshortcuts'=>'../../../'.KEYBOARD_SHORTCUTS_BASE.'/javascript/tinymce/editor_plugin_src.js'));
+TinyMCEConfig::get('cms')->enablePlugins(array('sskeyboardshortcuts'=>ModuleResourceLoader::resourceURL('undefinedoffset/silverstripe-keyboardshortcuts:javascript/tinymce/editor_plugin_src.js')));
 ?>

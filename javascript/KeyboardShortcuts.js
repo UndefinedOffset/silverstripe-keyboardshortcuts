@@ -232,7 +232,7 @@
                 if(button.length>0) {
                     button.showHide();
                     
-                    if(button.data('collapsed')) {
+                    if(button.data('collapsed')==false) {
                         $('.cms-search-form').find('input:not(.action):visible:first').focus();
                     }else {
                         $('.cms-search-form').find('input:not(.action):visible:first').blur();
@@ -246,19 +246,38 @@
              * Clears the search filters
              */
             _clearSearchFilters: function(e) {
-                var button=$('#cms-content-treeview .cms-tree-filtered > a.clear-filter');
+                var button=$('.cms-tree-view-sidebar .cms-clear-filter');
                 if(button.length>0) {
                     button.click();
                     
                     return false;
                 }
                 
-                button=$('#cms-content-tools-ModelAdmin form.cms-search-form .resetformaction');
+                var button=$('.cms-search-form .btn-toolbar button[name=action_clear]');
                 if(button.length>0) {
-                    try {button.click();} catch(e) {}
+                    button.click();
                     
-                    //Click the apply button to submit
-                    try {$('#cms-content-tools-ModelAdmin #Form_SearchForm_action_search').click();} catch(e) {}
+                    return false;
+                }
+            }
+        });
+        
+        $('.AssetAdmin').entwine({
+            onadd: function() {
+                this._super();
+                
+                var self=$(this);
+                
+                Mousetrap.bindGlobal('mod+shift+s', function(e) {return self._saveAndPublish(e);}); //Publish
+            },
+            
+            /**
+             * Targets the publish button in CMSMain
+             */
+            _saveAndPublish: function(e) {
+                var button=$('#Form_fileEditForm_action_publish');
+                if(button.length>0) {
+                    button.click();
                     
                     return false;
                 }
@@ -267,19 +286,17 @@
         
         
         //TinyMCE Binding
-        $('textarea.htmleditor').entwine({
+        $('textarea.htmleditor[data-editor="tinyMCE"]').entwine({
             MousetrapListeners: {},
             BoundListeners: {},
             
             /**
              * Handles binding the event listeners to tinymce when the editor is initialized
              */
-            oneditorinit: function() {
-                this._super();
-                
+            editorinit: function() {
                 var listeners=this.getMousetrapListeners();
-                if(this.getEditor().getInstance().contentWindow) {
-                    var editorBody=this.getEditor().getInstance().contentWindow.document.body;
+                if(this.getEditor().getInstance().getWin()) {
+                    var editorBody=this.getEditor().getInstance().getWin().document.body;
                     
                     //Purge all keyboard shortcuts 
                     Mousetrap(editorBody).reset();
@@ -301,8 +318,8 @@
              * Removes all tinymce listeners on remove of the editor
              */
             onremove: function() {
-                if(this.getEditor().getInstance().contentWindow) {
-                    var editorBody=this.getEditor().getInstance().contentWindow.document.body;
+                if(this.getEditor() && this.getEditor().getInstance() && this.getEditor().getInstance().getWin()) {
+                    var editorBody=this.getEditor().getInstance().getWin().document.body;
                     
                     //Purge all keyboard shortcuts 
                     Mousetrap(editorBody).reset();
@@ -332,8 +349,8 @@
                 
                 
                 //Bind the listener if the editor's window is ready and the keyboard shortcut is not already bound
-                if(this.getEditor().getInstance().contentWindow) {
-                    var editorBody=this.getEditor().getInstance().contentWindow.document.body;
+                if(this.getEditor() && this.getEditor().getInstance() && this.getEditor().getInstance().getWin()) {
+                    var editorBody=this.getEditor().getInstance().getWin().document.body;
                     var boundListeners=this.getBoundListeners();
                     
                     if(typeof boundListeners[key]=='undefined') {
@@ -354,7 +371,7 @@
     Mousetrap.prototype.bind=function(keys, callback, action) {
         _oldBind.call(this, keys, callback, action);
         
-        jQuery('textarea.htmleditor').entwine('ss').bindMousetrap(keys, callback, action);
+        jQuery('textarea.htmleditor[data-editor="tinyMCE"]').entwine('ss').bindMousetrap(keys, callback, action);
     };
     
     Mousetrap.prototype.noTinyMCEBind=function(keys, callback, action) {
