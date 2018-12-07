@@ -1,7 +1,7 @@
 {
 	"name": "undefinedoffset/silverstripe-keyboardshortcuts",
 	"description": "Adds keyboard shortcuts for common tasks to SilverStripe 4.0+ (ctrl/command+s for save anyone?)",
-	"type": "silverstripe-module",
+	"type": "silverstripe-vendormodule",
 	"keywords": ["silverstripe", "keyboard", "shortcuts"],
     "license": "BSD-3-Clause",
 	"authors": [
