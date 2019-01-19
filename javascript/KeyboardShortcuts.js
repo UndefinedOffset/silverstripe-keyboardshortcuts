@@ -371,7 +371,10 @@
     Mousetrap.prototype.bind=function(keys, callback, action) {
         _oldBind.call(this, keys, callback, action);
         
-        jQuery('textarea.htmleditor[data-editor="tinyMCE"]').entwine('ss').bindMousetrap(keys, callback, action);
+        var htmlEditors=jQuery('textarea.htmleditor[data-editor="tinyMCE"]');
+        if(htmlEditors.length>0) {
+            htmlEditors.entwine('ss').bindMousetrap(keys, callback, action);
+        }
     };
     
     Mousetrap.prototype.noTinyMCEBind=function(keys, callback, action) {
