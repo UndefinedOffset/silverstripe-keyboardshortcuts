@@ -372,7 +372,7 @@
         _oldBind.call(this, keys, callback, action);
         
         var htmlEditors=jQuery('textarea.htmleditor[data-editor="tinyMCE"]');
-        if(htmlEditors.length>0) {
+        if(htmlEditors.length>0 && htmlEditors.entwine('ss').bindMousetrap) {
             htmlEditors.entwine('ss').bindMousetrap(keys, callback, action);
         }
     };
