@@ -17,11 +17,6 @@
             ed.addShortcut('ctrl+shift+l', ed.getLang('sskeyboardshortcuts.insertbullets', 0), 'InsertUnorderedList'); //Insert or Remove Bulleted List
             
             ed.addShortcut('ctrl+l', ed.getLang('sskeyboardshortcuts.insertnumbers', 0), 'InsertOrderedList'); //Insert or Remove Numbered List
-            
-            //Bind the mousetrap events
-            ed.once('init', function() {
-                jQuery(ed.getElement()).entwine('ss').editorinit();
-            });
         },
         getInfo: function() {
             return {
