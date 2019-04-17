@@ -39,7 +39,7 @@
              * Targets the save button in CMSMain, GridField and SiteConfig
              */
             _saveForm: function(e) {
-                var button=$('#Form_EditForm_action_save, #Form_ItemEditForm_action_doSave, #Form_EditForm_action_save_siteconfig');
+                var button=$('#Form_EditForm_action_save, #Form_ItemEditForm_action_save, #Form_ItemEditForm_action_doSave, #Form_EditForm_action_save_siteconfig');
                 if(button.length>0) {
                     button.click();
                     
