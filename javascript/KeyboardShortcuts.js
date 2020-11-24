@@ -11,6 +11,10 @@
                 //Global Events
                 Mousetrap.bindGlobal('mod+s', function(e) {return self._saveForm(e);}); //Save Draft/Save
                 
+                // ModelAdmin search
+                if($('button[name="showFilter"]').length){
+                    Mousetrap.bindGlobal('mod+f', function(e) {return self._toggleSearch(e);}); //Search
+                }
                 
                 //CMS Page Edit Controller Only
                 if(self.hasClass('CMSPageEditController') || self.hasClass('CMSPageSettingsController')) {
@@ -35,6 +39,18 @@
             },
             
             //---------- Handlers ----------//
+            /**
+             * Targets the gridfield search button in ModelAdmin
+             */
+            _toggleSearch: function(e){
+                if($('.grid.grid-field.show-filter').length){
+                    $('.search-box__cancel').click();
+                } else {
+                    $('button[name="showFilter"]').click();
+                    $('.search-box input[type="search"]').focus();
+                }
+                return false;
+            },
             /**
              * Targets the save button in CMSMain, GridField and SiteConfig
              */
